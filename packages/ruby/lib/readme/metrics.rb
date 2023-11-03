@@ -39,6 +39,7 @@ module Readme
     end
 
     def call(env)
+      Readme::Metrics.logger.warn "Call Begin"
       start_time = Time.now
       status, headers, body = @app.call(env)
       end_time = Time.now
@@ -57,6 +58,7 @@ module Readme
       end
 
       [status, headers, body]
+      Readme::Metrics.logger.warn "Call End"
     end
 
     private
